@@ -14,13 +14,16 @@ public class Stack<T> {
     public Stack(int size) {
         if (size >= 1) {
             this.size = size;
-            objects = new Object[size];
         }
+        objects = new Object[size];
     }
     
-    public void push(T value) {
-        top++;
-        objects[top] = value;
+    public boolean push(T value) {
+        if (isFull()) {
+            return false;
+        }
+        objects[++top] = value;
+        return true;
     }
     
     public T pop() {
